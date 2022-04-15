@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventContent from "../../components/event-detail/event-content";
+import ErrorAlert from "../../components/events/error-alert";
 
 import { getEventById } from "../../dummy-data";
 
@@ -12,10 +13,10 @@ export default function EventsDetailPage(){
   const router = useRouter();
   const eventId = router.query.eventId;
   const event = getEventById(eventId);
-  console.log("evet", event);
+  console.log("event", event);
 
   if(!event) {
-    return <p>No event found!</p>;
+    return <ErrorAlert><p>No event found!</p></ErrorAlert>;
   }
 
   return(
